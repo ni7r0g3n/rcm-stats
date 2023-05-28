@@ -10,7 +10,6 @@ class Model {
 
   // accepts an object that has the same keys as the fields
   constructor(childModel, obj) {
-    console.log({ hydratingModel: obj });
     if (obj) {
       Object.keys(obj).forEach((key) => {
         this[key] = obj[key];
@@ -79,18 +78,7 @@ class Model {
   }
 
   save() {
-    console.log(
-      "saving event: ",
-      this[this.primaryKey],
-      " - ",
-      this.type,
-      " - ",
-      this.count,
-      " - ",
-      this.last
-    );
     this.find(this[this.primaryKey]).then((result) => {
-      console.log({ savingOnFoundEvent: result });
       if (result.id) {
         this.update(this);
       } else {

@@ -7,13 +7,12 @@ const port = 3000;
 app.use(cors());
 app.use(express.static("Tools"));
 
-app.post("/stats", (req, res) => {
-  let eventType = req.query.event;
+app.post("/rcms", (req, res) => {
+  let eventType = req.query.ev;
   new Event()
     .where("type", eventType)
     .first()
     .then((ev) => {
-      console.log({ foundEvent: ev, ofEventType: eventType });
       if (ev) {
         console.log("Event found, updating...");
         ev.count++;

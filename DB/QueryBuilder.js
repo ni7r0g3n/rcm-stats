@@ -150,7 +150,6 @@ class QueryBuilder {
   first() {
     let query = this.composeQuery() + " LIMIT 1";
     this.cleanUp();
-    console.log(query);
     return this.DB.executeQuery(query).then((result) => {
       return this.hydrateModel(result[0]);
     });
